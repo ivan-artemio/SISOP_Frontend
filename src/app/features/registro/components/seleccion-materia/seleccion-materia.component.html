@@ -1,0 +1,39 @@
+<div class="container-fluid p-0">
+    <div class="row m-0">
+        <div class="col-12 p-0">
+            <div class="login-card login-dark">
+                <div>
+                    <div>
+                        <a class="logo" [routerLink]="['/dashboard/default']" style="margin-bottom:0px;">
+                            <img class="img-fluid for-dark" src="assets/images/logo/escudo-uqroo.png" alt="looginpage" width="180">
+                            <img class="img-fluid for-light" src="assets/images/logo/escudo-uqroo.png" alt="looginpage" width="180">
+                        </a>
+                    </div>
+                    
+                    
+
+                    <div class="login-main">                    
+                        <form novalidate class="theme-form" (ngSubmit)="onValidate()">
+                            <h4>Materias disponibles</h4>
+                            <div class="form-group">
+                                <label class="form-label" for="validationDefault04">Seleccione una materia</label>
+                                <select class="form-select" id="validationDefault04" required [(ngModel)]="selectedMateria" name="materia">
+                                    <option selected disabled value="">Seleccione...</option>
+                                    <option value="estancia-profesional">ESTANCIA PROFESIONAL</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-0">
+                                <div class="text-end mt-3">
+                                    <button class="btn btn-primary btn-block w-100" type="submit">Validar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+.main-menu>li a {
+  line-height: 25px;
+}
+
+.nav-item .nav-link::after,
+.nav-item .nav-link:active::after {
+  content: none !important;
+  /* Anula el contenido generado */
+}
+
+.nav-link {
+  text-transform: none !important;
+  /* Anula el contenido generado */
+}

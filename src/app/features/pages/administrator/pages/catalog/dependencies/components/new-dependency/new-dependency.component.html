@@ -1,0 +1,119 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">
+    Información de la Organización
+  </h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="closeModal()"
+  ></button>
+</div>
+<form [formGroup]="dependencyForm" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="mb-3">
+      <label for="rfc" class="form-label">RFC</label>
+      <input
+        type="text"
+        class="form-control"
+        id="rfc"
+        placeholder="RFC"
+        formControlName="rfc"
+        [ngClass]="{
+          'is-invalid':
+            dependencyForm.get('rfc')?.errors &&
+            dependencyForm.get('rfc')?.dirty
+        }"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        placeholder="Nombre de la organización"
+        formControlName="name"
+        [ngClass]="{
+          'is-invalid':
+            dependencyForm.get('name')?.errors &&
+            dependencyForm.get('name')?.dirty
+        }"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="responsable" class="form-label">Responsable</label>
+      <input
+        type="text"
+        class="form-control"
+        id="responsable"
+        placeholder="Nombre del responsable"
+        formControlName="responsible"
+        [ngClass]="{
+          'is-invalid':
+            dependencyForm.get('responsible')?.errors &&
+            dependencyForm.get('responsible')?.dirty
+        }"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="direccion" class="form-label">Dirección</label>
+      <input
+        type="text"
+        class="form-control"
+        id="direccion"
+        placeholder="Dirección"
+        formControlName="address"
+        [ngClass]="{
+          'is-invalid':
+            dependencyForm.get('address')?.errors &&
+            dependencyForm.get('address')?.dirty
+        }"
+      />
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input
+          type="phone"
+          class="form-control"
+          id="telefono"
+          placeholder="Teléfono"
+          formControlName="phone"
+          [ngClass]="{
+            'is-invalid':
+              dependencyForm.get('phone')?.errors &&
+              dependencyForm.get('phone')?.dirty
+          }"
+        />
+      </div>
+      <div class="col">
+        <label for="acronimo" class="form-label">Acrónimo</label>
+        <input
+          type="phone"
+          class="form-control"
+          id="acronimo"
+          placeholder="Acrónimo"
+          formControlName="acronym"
+          [ngClass]="{
+            'is-invalid':
+              dependencyForm.get('acronym')?.errors &&
+              dependencyForm.get('acronym')?.dirty
+          }"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="closeModal()">
+      Cancelar
+    </button>
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="!dependencyForm.valid"
+    >
+      Guardar
+    </button>
+  </div>
+</form>

@@ -1,0 +1,32 @@
+<div class="page-wrapper">
+    <div class="container-fluid p-0">
+      <div class="row">
+        <div class="col-12">     
+          <div class="login-card login-dark" >
+            <div>
+              <div>
+                <a class="logo" [routerLink]="['/dashboard/default']" style="margin-bottom:0px;">
+                    <img class="img-fluid for-dark" src="assets/images/logo/escudo-uqroo.png" alt="looginpage" width="180">
+                    <img class="img-fluid for-light" src="assets/images/logo/escudo-uqroo.png" alt="looginpage" width="180">
+                </a>
+            </div>
+              <div class="login-main"> 
+                <div class="error-wrapper" style="    min-height: 0;">
+                    <div class="container">
+                        <img class="img-100" src="assets/images/other-images/sad.png" alt="">
+                        
+                        <h2 class="headline font-danger" style="margin-top: 20px;">Acceso denegado</h2>
+                        
+                        <div class="col-md-8 offset-md-2">
+                            <p class="sub-content">No cuentas con los requisitos necesarios para iniciar el proceso de prácticas profesionales</p>
+                        </div>
+                        <div><a class="btn btn-danger btn-lg" [routerLink]="['/dashboard/default']">Regresar</a></div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,19 @@
+stages:
+  - pull
+  - build
+  - deploy
+
+pull:
+  stage: pull
+  script:
+    - echo "Stage pull"
+
+build:
+  stage: build
+  script:
+    - echo "Stage build"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Stage deploy"

@@ -1,0 +1,145 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Información del Proyecto
+    </h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close" 
+      (click)="closeModal()"
+    ></button>
+  </div>
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div class="modal-body">
+
+      
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          placeholder="Nombre de proyecto "
+          formControlName="name"
+          [ngClass]="{
+            'is-invalid':
+              projectForm.get('name')?.errors &&
+              projectForm.get('name')?.dirty
+          }"
+        />
+      </div>
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="dependencia">Dependencia</label>
+          <p-dropdown 
+            [options]="areasOptions"
+            formControlName="areaId"
+            placeholder="Selecciona una dependencia"
+            [style]="{ width: '100%' }"
+            [ngClass]="{
+              'is-invalid': projectForm.get('areaId')?.errors && projectForm.get('areaId')?.dirty
+            }"
+          ></p-dropdown>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="responsable" class="form-label">Responsable</label>
+        <input
+          type="text"
+          class="form-control"
+          id="responsable"
+          placeholder="Nombre del responsable"
+          formControlName="responsible"
+          [ngClass]="{
+            'is-invalid':
+              projectForm.get('responsible')?.errors &&
+              projectForm.get('responsible')?.dirty
+          }"
+        />
+      </div>
+       
+    
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="tipo">Tipo</label>
+            <p-dropdown 
+              [options]="tipos"
+              formControlName="typeId"
+              placeholder="Selecciona un tipo"
+              [style]="{ width: '100%' }"
+              [ngClass]="{
+                'is-invalid': projectForm.get('typeId')?.errors && projectForm.get('typeId')?.dirty
+              }"
+            ></p-dropdown>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <label for="ciudad">Ciudad</label>
+            <p-dropdown 
+              [options]="ciudades"
+              formControlName="cityId"
+              placeholder="Selecciona una ciudad"
+              [style]="{ width: '100%' }"
+              [ngClass]="{
+                'is-invalid': projectForm.get('cityId')?.errors && projectForm.get('cityId')?.dirty
+              }"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+     
+
+      <div class="row">
+        <div class="col">
+          <label for="cupo" class="form-label">Cupo</label>
+          <input
+            type="number"
+            class="form-control"
+            id="cupo"
+            placeholder="Cupo"
+            formControlName="quota"
+            [ngClass]="{
+              'is-invalid':
+                projectForm.get('quota')?.errors &&
+                projectForm.get('quota')?.dirty
+            }"
+          />
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <label for="estatus">Estatus</label>
+            <p-dropdown 
+              [options]="estatus"
+              formControlName="status"
+              placeholder="Selecciona una ciudad"
+              [style]="{ width: '100%' }"
+              [ngClass]="{
+                'is-invalid': projectForm.get('status')?.errors && projectForm.get('status')?.dirty
+              }"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="closeModal()">
+        Cancelar
+      </button>
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!projectForm.valid"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+  

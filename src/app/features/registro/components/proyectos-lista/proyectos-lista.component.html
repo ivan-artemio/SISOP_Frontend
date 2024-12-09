@@ -1,0 +1,93 @@
+
+<div class="container-fluid search-page">
+    <div class="email-wrap bookmark-wrap">
+        <div class="row">  
+            <div class="col-xl-12 col-md-12 box-col-12">
+              <div class="email-right-aside bookmark-tabcontent">
+                
+
+                <div class="card email-body radius-left">
+                    <div class="ps-0">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="pills-created">
+                                <div class="card mb-0">
+                                    <div class="card-header d-flex">
+                                        
+                                        <!--<h4 class="mb-0">Proyectos disponibles</h4>--->
+                                        
+                                        <form class="theme-form">
+                                            <div class="input-group m-0 flex-nowrap">
+                                                <input class="form-control-plaintext" type="text" placeholder="Buscar..." [(ngModel)]="searchText"  name="searchInput">
+                                                <span class="btn btn-primary input-group-text"><i class="icofont icofont-ui-search"></i></span>
+                                            </div>                                                                                        
+                                        </form>
+                                        
+                                        
+
+                                        <ul>
+                                            <li>
+                                                <a class="grid-bookmark-view" href="javascript:void(0)" (click)="changegrid()">
+                                                    <app-feathericon [icon]="'grid'"></app-feathericon>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="list-layout-view" href="javascript:void(0)" (click)="changelist()">
+                                                    <app-feathericon [icon]="'list'"></app-feathericon>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+                                    <div class="card-body pb-0">
+                                        <div class="details-bookmark text-center" [class.list-bookmark]="listBookmark">
+                                            <div class="row" id="bookmarkData">
+                                            @for(data of filteredData; track data){
+                                                <div class="col-xxl-3 col-md-4 col-ed-4">
+                                                    <div class="card card-with-border bookmark-card ">
+                                                        <div class="details-website">
+                                                            <img class="img-fluid" src="assets/images/lightgallry/01.jpg" alt="">
+                                                             
+                                                            <div class="desciption-data">
+                                                                <div class="title-bookmark">
+                                                                    <h6 class="card-title">{{ data.name }}</h6>
+                                                                    <p class="card-text">{{ data.name }}</p>
+                                                                    
+
+                                                                    <div class="common-flex"> <!--hover-block -->
+                                                                        <button class="btn btn-success" type="button" (click)="composeEmail()">Suscribirse</button>
+                                                                        <button class="btn btn-info" type="button" >Información </button>
+                                                                    </div>
+                                                                    
+                                                                    <!--<div class="content-general">
+                                                                        <p class="desc_4">{{ data.desc }}</p>
+                                                                        <span class="collection_4">{{ data.collection }}</span>
+                                                                    </div>-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                }
+                                                @empty{ 
+                                                <div class="no-favourite">
+                                                    <span>No se encontraron proyectos.</span>
+                                                </div>
+                                                }
+                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

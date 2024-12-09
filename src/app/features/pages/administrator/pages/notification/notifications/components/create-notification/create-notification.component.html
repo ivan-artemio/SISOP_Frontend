@@ -1,0 +1,78 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+       Información de la notificación 
+    </h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close" 
+      (click)="closeModal()"
+    ></button>
+  </div>
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div class="modal-body">
+      
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="dependencia">Destinatario</label>
+          <p-dropdown 
+            [options]="tipos"
+            formControlName="areaId"
+            placeholder="Selecciona una opción"
+            [style]="{ width: '100%' }"
+            [ngClass]="{
+              'is-invalid': projectForm.get('areaId')?.errors && projectForm.get('areaId')?.dirty
+            }"
+          ></p-dropdown>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Asunto</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          placeholder=" "
+          formControlName="name"
+          [ngClass]="{
+            'is-invalid':
+              projectForm.get('name')?.errors &&
+              projectForm.get('name')?.dirty
+          }"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="mensaje" class="form-label">Mensaje</label>
+        <textarea
+          class="form-control"
+          id="mensaje"
+          rows="4"
+          placeholder="Escribe tu mensaje aquí..."
+          formControlName="name"
+          [ngClass]="{
+            'is-invalid':
+              projectForm.get('name')?.errors &&
+              projectForm.get('name')?.dirty
+          }"
+        ></textarea>
+      </div>
+
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="closeModal()">
+        Cancelar
+      </button>
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!projectForm.valid"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
+  

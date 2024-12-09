@@ -1,0 +1,50 @@
+<div class="col-12">
+    <p-toast></p-toast>
+    <div>        
+		<button pButton pRipple type="button" icon="pi pi-chevron-left" label="Regresar" class="p-button-raised p-button-success mb-2" (click)="volver()"></button>
+    </div>
+    <div class="card">
+        
+        <form [formGroup]="agregarDependenciaForm" >
+            <div class="row p-3">
+                <div class="col-4 pb-2">
+                    <label class="form-label" htmlFor="nombre">Nombre</label>
+                    <input id="nombre" class="form-control" type="text" [formControl]="nombreFormControl"/>
+                </div>
+                <div class="col-4 pb-2">
+                    <label class="form-label" htmlFor="rfc">RFC</label>
+                    <input id="rfc" class="form-control" type="text" [formControl]="rfcFormControl"/>
+                </div>
+                <div class="col-4 pb-2">
+                    <label class="form-label" htmlFor="responsable">Responsable</label>
+                    <input id="responsable" class="form-control" type="text" [formControl]="responsableFormControl"/>
+                </div>
+                <div class="col-4 pb-2">
+                    <label class="form-label" htmlFor="direccion">Dirección</label>
+                    <input id="direccion" class="form-control" type="text" [formControl]="direccionFormControl"/>
+                </div>
+                <div class="col-4 pb-2">
+                    <label class="form-label" htmlFor="telefono">Teléfono</label>
+                    <input id="telefono" class="form-control" type="text" [formControl]="telefonoFormControl"/>
+                </div>
+                <div class="col-4 pb-2">
+                    <label class="form-label" htmlFor="acronimo">Acrónimo</label>
+                    <input id="acronimo" class="form-control" type="text" [formControl]="acronimoFormControl"/>
+                </div>
+                
+
+
+                <div class="field col-12">
+                    @if(editable){
+                        <button [disabled]="agregarDependenciaForm.invalid" pButton pRipple type="button" icon="pi pi-save" label="Guardar cambios" class="p-button-raised p-button-success mb-2" (click)="actualizar()"></button>
+                    }@else{
+                        <button [disabled]="agregarDependenciaForm.invalid" pButton pRipple type="button" icon="pi pi-plus-circle" label="Agregar dependencia" class="p-button-raised p-button-success mb-2" (click)="agregar()"></button>
+                    }
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

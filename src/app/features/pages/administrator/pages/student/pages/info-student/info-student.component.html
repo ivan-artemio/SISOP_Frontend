@@ -1,0 +1,182 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title mb-0">Perfil del alumno</h4>
+          <div class="card-options">
+            <a class="card-options-collapse" href="javascript:void(0)">
+              <i class="fe fe-chevron-up"></i>
+            </a>
+            <a class="card-options-remove" href="javascript:void(0)">
+              <i class="fe fe-x"></i>
+            </a>
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row mb-2">
+              <div class="profile-title">
+                <div class="media">
+                  <img
+                    class="img-70 rounded-circle"
+                    alt=""
+                    src="assets/images/user/7.jpg"
+                  />
+                  <div class="media-body">
+                    <h5 class="mb-1">Cesar Euan {{ application?.userId }}</h5>
+                    <p>Licenciatura en Derecho</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3 mt-3">
+              <h6 class="form-label">Proyecto</h6>
+              <p>Integración de nuevas leyes al proceso legistal</p>
+            </div>
+            <div class="mb-3">
+              <h6 class="form-label">Dependencia</h6>
+              <p>Poder judicial de la federación</p>
+            </div>
+            <div class="mb-3">
+              <h6 class="form-label">Semestre</h6>
+              <p>8</p>
+            </div>
+            <div class="mb-3">
+              <h6 class="form-label">Materia</h6>
+              <p>Derecho legislativo</p>
+            </div>
+            <p-confirmPopup [style]="{ paddingTop: '18px' }" />
+            <div class="form-footer">
+              <p-button
+                label="Aceptar"
+                (onClick)="confirmStatus($event, Actions.ACCEPTED)"
+              />
+              <p-button
+                label="Rachazar"
+                severity="danger"
+                (onClick)="confirmStatus($event, Actions.REJECTED)"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Sección habilitada/deshabilitada según sectionsEnabled -->
+    <div class="col-xl-8" *ngIf="sectionsEnabled">
+      <form class="card">
+        <div class="card-header">
+          <h4 class="card-title mb-0">Datos de la Práctica profesional</h4>
+          <div class="card-options">
+            <a
+              class="card-options-collapse"
+              href="javascript:void(0)"
+              data-bs-toggle="card-collapse"
+              ><i class="fe fe-chevron-up"></i></a
+            ><a
+              class="card-options-remove"
+              href="javascript:void(0)"
+              data-bs-toggle="card-remove"
+              ><i class="fe fe-x"></i
+            ></a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="mb-3">
+                <label class="form-label">Fecha inicio</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  placeholder="Username"
+                />
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="mb-3">
+                <label class="form-label">Fecha final</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  placeholder="Username"
+                />
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="mb-3">
+                <label class="form-label">Horas totales</label>
+                <input class="form-control" type="number" placeholder="Horas" />
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label class="form-label">Área</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Área de la práctica profesional"
+                />
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="mb-3">
+                <label class="form-label">Encargado</label>
+                <select class="form-control btn-square">
+                  <option value="0">--Select--</option>
+                  <option value="1">Germany</option>
+                  <option value="2">Canada</option>
+                  <option value="3">Usa</option>
+                  <option value="4">Aus</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="mb-3">
+                <label class="form-label">Ciudad</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  placeholder="Ciudad"
+                />
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="mb-3">
+                <label class="form-label">Asesor</label>
+                <select class="form-control btn-square">
+                  <option value="0">--Select--</option>
+                  <option value="1">Germany</option>
+                  <option value="2">Canada</option>
+                  <option value="3">Usa</option>
+                  <option value="4">Aus</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div>
+                <label class="form-label">Comentarios</label>
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="Ingresa una descripción"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-end">
+          <button class="btn btn-primary" type="submit">Guardar datos</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Sección habilitada/deshabilitada según sectionsEnabled -->
+<div class="container-fluid" *ngIf="sectionsEnabled">
+  <div class="email-wrap email-main-wrapper">
+    <app-menu-lateral></app-menu-lateral>
+  </div>
+</div>

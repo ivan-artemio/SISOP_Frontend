@@ -1,0 +1,17 @@
+.media-body {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-dropdown {
+  width: 100% !important;
+  background-color: orange !important;
+}

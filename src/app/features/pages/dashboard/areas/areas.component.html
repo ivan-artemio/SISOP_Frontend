@@ -1,0 +1,103 @@
+<p-card header="Áreas">
+	<p-toast></p-toast>
+    <p-table #dt1 [value]="areas" dataKey="id" [rows]="10" [loading]="loading" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['id','name','phone','responsible']" responsiveLayout="scroll">
+		<ng-template pTemplate="caption">
+			<div class="flex justify-content-between flex-column sm:flex-row">
+				<button pButton pRipple type="button" icon="pi pi-plus" label="Agregar área" class="p-button-raised p-button-success" (click)="agregarArea()"></button>
+				<button pButton label="Limpiar" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+				<span class="p-input-icon-left mb-2">
+					<i class="pi pi-search"></i>
+					<input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Buscar palabra" class="w-full"/>
+				</span>
+			</div>
+			@if(showEditSpace){
+				<div class="flex justify-content-between flex-column sm:flex-row">
+					<div class="card m-2">
+						<form [formGroup]="agregarAreaForm" (ngSubmit)="agregarArea()">
+							<div class="row p-3">
+								
+								<div class="col-3 pb-2">
+									<label class="form-label" for="nombre">Nombre</label>
+									<input id="nombre" class="form-control" type="text" [formControl]="nombreFormControl"/>
+								</div>
+								<div class="col-3 pb-2">
+									<label class="form-label" for="inpt-pais">Responsable</label>
+									<input id="sigla" class="form-control" type="text" />
+								</div>
+								<div class="col-3 pb-2">
+									<label class="form-label" for="inpt-pais">Telefono</label>
+									<input id="sigla" class="form-control" type="text" />
+								</div>
+								<div class="col-3 pb-2 align-items-bottom">
+									@if(editable){
+										<button [disabled]="agregarAreaForm.invalid" pButton pRipple type="button" label="Guardar" class="p-button-raised p-button-success mb-2" (click)="actualizarArea()"></button>
+									}@else{
+										<button [disabled]="agregarAreaForm.invalid" pButton pRipple type="button" label="Agregar" class="p-button-raised p-button-success mb-2" (click)="agregarArea()"></button>
+									}
+								</div>
+							</div>
+						</form> 
+					</div>
+				</div>
+			}
+		</ng-template>
+		<ng-template pTemplate="header">
+			<tr>
+				<th pSortableColumn="id" style="width:20%">ID <p-sortIcon field="id"></p-sortIcon></th>
+				<th pSortableColumn="name" style="width:20%">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+				<!-- <th pSortableColumn="idOrganization" style="width:20%">Organización <p-sortIcon field="idOrganization"></p-sortIcon></th> -->
+				<th pSortableColumn="phone" style="width:20%">Teléfono <p-sortIcon field="phone"></p-sortIcon></th>					
+				<th pSortableColumn="responsible" style="width:20%">Responsable <p-sortIcon field="responsible"></p-sortIcon></th>			
+				<th style="min-width: 8rem">
+					<div class="flex justify-content-between align-items-center">
+						Acciones								
+					</div>
+				</th>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="body" let-area>
+			<tr>
+				<td>
+					{{area.id}}
+				</td>
+				<td>
+					{{area.name}}
+				</td>
+				<td>
+					{{area.phone}}
+				</td>	
+				<td>
+					{{area.responsible}}
+				</td>
+				<td>
+                    <div class="flex">
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editarArea(area.id)"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteArea(area)"></button>
+                    </div>
+                </td>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No se encontrarón areas.</td>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="loadingbody">
+			<tr>
+				<td colspan="8">Cargando areas. Por favor espere.</td>
+			</tr>
+		</ng-template>
+	</p-table>
+
+</p-card>
+
+<p-dialog [(visible)]="deleteAreaDialog" header="Eliminar área" [modal]="true" [style]="{width:'450px'}" (onHide)="onHideDialog.emit($event)">
+	<div class="flex align-items-center justify-content-center">
+		<i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+		<span *ngIf="area">¿Estas seguro que deseas eliminar la área? <!--<b>{{archivo.name}}</b>?--></span>
+	</div>
+	<ng-template pTemplate="footer">
+		<button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteAreaDialog = false"></button>
+		<button pButton pRipple icon="pi pi-check" class="p-button-text" label="Sí" (click)="confirmDelete()"></button>
+	</ng-template>
+</p-dialog>

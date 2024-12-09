@@ -1,0 +1,94 @@
+<p-card header="Carreras">
+  <p-table
+    #dt1
+    [value]="carreras"
+    dataKey="id"
+    [rows]="10"
+    [loading]="loading"
+    [rowHover]="true"
+    styleClass="p-datatable-gridlines"
+    [paginator]="true"
+    [globalFilterFields]="['title', 'category.name', 'price', 'id']"
+    responsiveLayout="scroll"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-between flex-column sm:flex-row">
+        <button
+          pButton
+          label="Limpiar"
+          class="p-button-outlined mb-2"
+          icon="pi pi-filter-slash"
+          (click)="clear(dt1)"
+        ></button>
+        <span class="p-input-icon-left mb-2">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            #filter
+            (input)="onGlobalFilter(dt1, $event)"
+            placeholder=""
+            class="w-full"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="title" style="width: 20%">
+          Nombre <p-sortIcon field="title"></p-sortIcon>
+        </th>
+        <th pSortableColumn="category.name" style="width: 20%">
+          Campus <p-sortIcon field="category.name"></p-sortIcon>
+        </th>
+        <th pSortableColumn="price" style="width: 20%">
+          Plan <p-sortIcon field="price"></p-sortIcon>
+        </th>
+        <th pSortableColumn="id" style="width: 20%">
+          Tipo <p-sortIcon field="id"></p-sortIcon>
+        </th>
+        <th style="min-width: 8rem">
+          <div class="flex justify-content-between align-items-center">
+            Archivos
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer>
+      <tr>
+        <td>
+          {{ customer.title }}
+        </td>
+        <td>
+          {{ customer.category.name }}
+        </td>
+        <td>
+          {{ customer.price }}
+        </td>
+        <td>
+          {{ customer.id }}
+        </td>
+        <td class="text-center">
+          <button
+            [routerLink]="['/carreras/archivos-lista', customer.id]"
+            pButton
+            pRipple
+            type="button"
+            label="Editar archivos"
+            class="p-button-raised p-button-warning"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No customers found.</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody">
+      <tr>
+        <td colspan="8">Loading customers data. Please wait.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

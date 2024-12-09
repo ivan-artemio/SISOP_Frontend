@@ -1,0 +1,54 @@
+<div class="row g-3 ">
+    <div class="col-sm-12">
+        
+        <div class="mb-3">
+            <label>Cargar archivo: Seguro médico <span class="badge badge-light-success font-success">Aceptado</span> </label>
+            <div class="dropzone dz-clickable">
+                <ngx-dropzone (change)="onSelect($event)" [multiple]="true">
+                    <ngx-dropzone-label>
+                        <div>
+                            <div class="dz-message needsclick">
+                                <i class="icon-cloud-up"></i>
+                                <h6></h6>
+                                <span class="dz-message needsclick">Arrastra y suelta tus archivos aquí o haz clic para explorar y seleccionar archivos</span>
+                            </div>
+                        </div>
+                    </ngx-dropzone-label>
+                    @for( f of files; track f){
+                    <ngx-dropzone-preview [removable]="true" (removed)="onRemove(f)">
+                        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                    </ngx-dropzone-preview>
+                    }
+                </ngx-dropzone>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <div class="text-end"><a class="btn btn-success me-3" href="javascript:void(0)"> Enviar</a></div>
+    </div>
+</div>
+
+<div class="row g-3 mb-3">
+
+    <div class="col-sm-12">
+        
+        <div class="card-wrapper border rounded-3 light-card checkbox-checked">
+            <h6 class="pb-3 f-w-500"> Descargar carta de presentación preliminar</h6>
+            <form class="row g-3">
+            <!--<div class="col-12">
+                <label class="col-form-label" for="cleave-date1"> Descargar carta de presentación preliminar</label>
+                <input class="form-control" id="cleave-date1" type="text" placeholder="DD-MM-YYYY">
+            </div>-->
+            <div class="col-12">                    
+                <a class="btn btn-primary me-3" href="javascript:void(0)"><i class="fas fa-file-download "></i> Descargar</a>
+            </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

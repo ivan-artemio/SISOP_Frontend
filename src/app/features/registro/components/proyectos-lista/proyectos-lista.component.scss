@@ -1,0 +1,34 @@
+.bookmark-tabcontent .details-bookmark .bookmark-card.card:hover .title-bookmark p {
+    opacity: 1;
+}
+
+.bookmark-tabcontent .details-bookmark .bookmark-card.card:hover .title-bookmark .hover-block {
+    opacity: 1;
+    animation: displayTransition 2s;
+  }
+
+  .common-flex {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.bookmark-tabcontent .details-bookmark.list-bookmark .bookmark-card.card .title-bookmark p, .bookmark-tabcontent .details-bookmark.list-bookmark .bookmark-card.card .title-bookmark h6, .bookmark-tabcontent .details-bookmark.list-bookmark .bookmark-card.card .title-bookmark .h6 {
+    margin-top: 0;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.bookmark-tabcontent .details-bookmark.list-bookmark .bookmark-card.card .title-bookmark h6::after, .bookmark-tabcontent .details-bookmark.list-bookmark .bookmark-card.card .title-bookmark .h6::after {
+    content: "";
+    
+}
+
+.bookmark-tabcontent .details-bookmark.list-bookmark .bookmark-card.card .title-bookmark h6, .bookmark-tabcontent .details-bookmark.list-bookmark .bookmark-card.card .title-bookmark .h6 {
+    padding-right: 0px;
+}
+
+.bookmark-tabcontent .details-bookmark .bookmark-card.card .title-bookmark h6, .bookmark-tabcontent .details-bookmark .bookmark-card.card .title-bookmark .h6 {
+    -webkit-box-orient: unset; 
+    overflow: visible;
+}

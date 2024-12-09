@@ -1,0 +1,64 @@
+<div class="card email-body radius-left">
+  <div class="ps-0">
+    <div class="tab-content">
+      <div class="tab-pane fade active show" id="pills-created">
+        <div class="card mb-0">
+          <div class="card-header d-flex">
+            <h6 class="mb-0">{{ getBookmarkData.title }}</h6>
+          </div>
+          <div class="card-body pb-0">
+            <div class="details-bookmark text-left">
+              <div class="row" id="bookmarkData">
+                <ng-container [ngSwitch]="selectedheading_id">
+                  <ng-container *ngSwitchCase="1">
+                    <app-precarta-presentacion></app-precarta-presentacion>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="2">
+                    <app-carta-presentacion></app-carta-presentacion>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="3">
+                    <app-carta-aceptacion></app-carta-aceptacion>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="4">
+                    <app-reporte></app-reporte>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="5">
+                    <app-reporte></app-reporte>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="6">
+                    <app-reporte></app-reporte>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="7">
+                    <app-reporte></app-reporte>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="8">
+                    <app-reporte-final></app-reporte-final>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="9">
+                    <app-carta-culminacion></app-carta-culminacion>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="10">
+                    <app-oficio-termino></app-oficio-termino>
+                  </ng-container>
+                  <ng-container *ngSwitchDefault>
+                    <div *ngIf="!isAdmin">
+                      <app-esperando-validacion></app-esperando-validacion>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <!-- TODO: Falta agregar validación si es admin -->
+          <div
+            class="card-footer text-muted d-flex justify-content-between"
+            *ngIf="selectedheading_id != undefined && isAdmin"
+          >
+            <p-button label="Aceptar" />
+            <p-button label="Rachazar" severity="danger" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<p-card header="Dependencias">
+	<p-toast></p-toast>
+    <p-table #dt1 [value]="dependencias" dataKey="id" [rows]="10" [loading]="loading" [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['id','name','rfc','responsable','address','phone','acronym']" responsiveLayout="scroll">
+		<ng-template pTemplate="caption">
+			<div class="flex justify-content-between flex-column sm:flex-row">
+				<button pButton pRipple type="button" icon="pi pi-plus" label="Agregar dependencia" class="p-button-raised p-button-success" (click)="agregarDependencia()"></button>
+				<button pButton label="Limpiar" class="p-button-outlined mb-2" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+				<span class="p-input-icon-left mb-2">
+					<i class="pi pi-search"></i>
+					<input pInputText type="text" #filter (input)="onGlobalFilter(dt1, $event)" placeholder="Buscar palabra" class="w-full"/>
+				</span>
+			</div>
+		</ng-template>
+		<ng-template pTemplate="header">
+			<tr>
+				<th pSortableColumn="id" style="width:20%">ID <p-sortIcon field="id"></p-sortIcon></th>
+				<th pSortableColumn="name" style="width:20%">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+				<th pSortableColumn="rfc" style="width:20%">RFC <p-sortIcon field="rfc"></p-sortIcon></th>
+				<th pSortableColumn="responsable" style="width:20%">Responsable <p-sortIcon field="responsable"></p-sortIcon></th>		
+				<th pSortableColumn="phone" style="width:20%">Teléfono <p-sortIcon field="phone"></p-sortIcon></th>					
+				<th pSortableColumn="acronym" style="width:20%">Acrónimo <p-sortIcon field="acronym"></p-sortIcon></th>					
+				<th style="min-width: 8rem">
+					<div class="flex justify-content-between align-items-center">
+						Acciones								
+					</div>
+				</th>
+				<th style="min-width: 8rem">
+					<div class="flex justify-content-between align-items-center">
+						Áreas								
+					</div>
+				</th>
+				<th style="min-width: 8rem">
+					<div class="flex justify-content-between align-items-center">
+						Convenios								
+					</div>
+				</th>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="body" let-dependencia>
+			<tr>
+				<td>
+					{{dependencia.id}}
+				</td>
+				<td>
+					{{dependencia.name}}
+				</td>
+				<td>
+					{{dependencia.rfc}}
+				</td>
+				<td>
+					{{dependencia.responsible}}
+				</td>
+				<td>
+					{{dependencia.phone}}
+				</td>	
+				<td>
+					{{dependencia.acronym}}
+				</td>
+				<td>
+                    <div class="flex">
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editarDependencia(dependencia.id)"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteDependencia(dependencia)"></button>
+                    </div>
+                </td>
+				<td class="text-center">
+					<button pButton pRipple type="button" label="Ver" class="p-button-raised p-button-success"></button>						
+				</td>
+				<td class="text-center">
+					<button pButton pRipple type="button" label="Ver" class="p-button-raised p-button-success"></button>						
+				</td>
+                <!-- <td>
+                    <ul class="action">
+                        <div class="btn btn-pill btn-xs btn-warning d-flex align-items-center justify-content-center">
+                            <i class="fa fa-pen font-primary p-2" (click)="editarDependencia(dependencia.id)"></i>
+                        </div>
+                        <div class="btn btn-pill btn-xs btn-danger" (click)="removeItem(dependencia.id)">
+                            <i class="fa fa-trash font-primary p-2"></i>
+                        </div>
+                    </ul>
+                </td>						
+                <td>
+                    <div class="btn btn-pill btn-xs btn-success p-2" (click)="showAreas(dependencia.id)">
+                        Ver
+                    </div>
+                </td>
+                <td>
+                    <div class="btn btn-pill btn-xs btn-success p-2" (click)="showConvenios(dependencia.id)">
+                        Ver
+                    </div>
+                </td> -->
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="emptymessage">
+			<tr>
+				<td colspan="8">No se encontrarón dependencias.</td>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="loadingbody">
+			<tr>
+				<td colspan="8">Cargando dependencias. Por favor espere.</td>
+			</tr>
+		</ng-template>
+	</p-table>
+
+</p-card>
+
+<p-dialog [(visible)]="deleteDependenciaDialog" header="Eliminar dependencia" [modal]="true" [style]="{width:'450px'}" (onHide)="onHideDialog.emit($event)">
+	<div class="flex align-items-center justify-content-center">
+		<i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+		<span *ngIf="dependencia">¿Estas seguro que deseas eliminar la dependencia? <!--<b>{{archivo.name}}</b>?--></span>
+	</div>
+	<ng-template pTemplate="footer">
+		<button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteDependenciaDialog = false"></button>
+		<button pButton pRipple icon="pi pi-check" class="p-button-text" label="Sí" (click)="confirmDelete()"></button>
+	</ng-template>
+</p-dialog>
+
